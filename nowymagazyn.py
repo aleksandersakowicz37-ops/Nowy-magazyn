@@ -1,11 +1,9 @@
 import streamlit as st
-import pandas as pd
 from supabase import create_client, Client
 
-# Połączenie z Supabase (Streamlit Cloud -> Secrets)
 def get_supabase() -> Client:
-    url = st.secrets["SUPABASE_URL"]
-    key = st.secrets["SUPABASE_KEY"]
+    url = st.secrets["SUPABASE_URL"].strip()
+    key = st.secrets["SUPABASE_KEY"].strip()
     return create_client(url, key)
 
 st.set_page_config(page_title="Magazyn", layout="wide")
